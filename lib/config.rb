@@ -1,3 +1,5 @@
+require 'erb'
+
 module PaypalAdaptive
   class Config
     PAYPAL_BASE_URL_MAPPING = {
@@ -26,7 +28,7 @@ module PaypalAdaptive
     end
 
     def load(rails_env)
-      config= YAML.load_file(@config_filepath)[rails_env]
+      config = YAML.load(ERB.new(File.new(@config_filepath).read).result)[rails_env]
 
       if config["retain_requests_for_test"] == true
         @retain_requests_for_test = true
