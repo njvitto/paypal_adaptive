@@ -48,6 +48,7 @@ module PaypalAdaptive
         }
 
         @headers["X-PAYPAL-SANDBOX-EMAIL-ADDRESS"] = config['sandbox_email'] if pp_env == :sandbox
+        @headers["X-PAYPAL-MERCHANT-REFERRAL-BONUS-ID"] = config['merchant_referral_bonus_id'] if config['merchant_referral_bonus_id']
         
       end
     end
