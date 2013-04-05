@@ -85,8 +85,7 @@ module PaypalAdaptive
       http.use_ssl = (url.scheme == 'https')
 
       logger.request(path, api_request_data, @@headers) if logger
-      resp, response_data = http.post(path, api_request_data, @@headers)
-      logger.response(resp.code, response_data) if logger
+      response_data = http.post(path, api_request_data, @@headers).body
 
       JSON.parse(response_data)
     end

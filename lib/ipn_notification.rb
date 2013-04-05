@@ -22,7 +22,6 @@ module PaypalAdaptive
 
       logger.request(path, data, "") if logger
       response_data = http.post(path, data).body
-      logger.response(resp.code, response_data) if logger
 
       @verified = response_data == "VERIFIED"
     end
