@@ -44,7 +44,11 @@ task :test => :check_dependencies
 
 task :default => :test
 
-require 'rake/rdoctask'
+begin
+  require 'rake/rdoctask'
+rescue
+  require 'rdoc/task'
+end
 Rake::RDocTask.new do |rdoc|
   version = File.exist?('VERSION') ? File.read('VERSION') : ""
 
